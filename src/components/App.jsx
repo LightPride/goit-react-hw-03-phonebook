@@ -3,7 +3,6 @@ import ContactList from './ContactList/ContactList';
 import ContactForm from './ContactForm/ContactForm';
 import Filter from './Filter/Filter';
 import shortid from 'shortid';
-import { AppContainer } from './App.styled';
 
 class App extends Component {
   state = {
@@ -61,7 +60,7 @@ class App extends Component {
       contact.name.toLowerCase().includes(normalizedFilter)
     );
     return (
-      <AppContainer>
+      <>
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.addContact}></ContactForm>
         <h2>Contacts</h2>
@@ -70,7 +69,7 @@ class App extends Component {
           contacts={filteredContacs}
           onDeteleContact={this.deleteContact}
         ></ContactList>
-      </AppContainer>
+      </>
     );
   }
 }
