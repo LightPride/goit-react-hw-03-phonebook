@@ -29,19 +29,16 @@ class App extends Component {
       id: shortid.generate(),
       ...data,
     };
-
-    this.setState(prevState => {
-      const existingContact = prevState.contacts.find(
-        contact => contact.name.toLowerCase() === newContact.name.toLowerCase()
-      );
-      if (existingContact) {
-        alert(`${existingContact.name} is already in contacts`);
-      } else {
-        return {
-          contacts: [newContact, ...prevState.contacts],
-        };
-      }
-    });
+    const existingContact = this.state.contacts.find(
+      contact => contact.name.toLowerCase() === newContact.name.toLowerCase()
+    );
+    if (existingContact) {
+      alert(`${existingContact.name} is already in contacts`);
+      return;
+    }
+    this.setState(prevState => ({
+      contacts: [newContact, ...prevState.contacts],
+    }));
   };
 
   deleteContact = contactId => {
